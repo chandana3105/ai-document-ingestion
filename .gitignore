@@ -1,0 +1,32 @@
+# Environment
+.env
+
+# Vector DB (generated, not source code)
+vector_db/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+
+# Models cache (downloaded at runtime)
+.cache/
+sentence_transformers/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+documents/
