@@ -1,4 +1,4 @@
-"""FastAPI REST interface for the RAG pipeline."""
+# FastAPI REST interface for the RAG pipeline.
 
 import asyncio
 import json
@@ -45,7 +45,7 @@ def get_engine() -> SearchEngine:
     return _engine
 
 
-# --- Models ---
+# Models
 
 class IngestResponse(BaseModel):
     chunks_created: int
@@ -58,7 +58,7 @@ class ChatRequest(BaseModel):
     k: int | None = Field(default=None, ge=1, description="Number of chunks to retrieve (min 1)")
 
 
-# --- Routes ---
+# Routes
 
 @app.get("/health")
 def health():
@@ -71,9 +71,9 @@ def health():
 
 @app.post("/ingest", response_model=IngestResponse)
 def run_ingest():
-    """Embed all documents in the configured documents directory."""
+    "Embed all documents in the configured documents directory."
     global _engine
-    _engine = None  # reset so next /chat reloads the updated DB
+    _engine = None  
     chunks = ingest()
     return IngestResponse(chunks_created=chunks, documents_dir=settings.documents_dir)
 
@@ -92,7 +92,7 @@ class ChatResponse(BaseModel):
     },
 )
 async def chat(req: ChatRequest):
-    """Stream an answer using MMR retrieval + the selected LLM provider."""
+    "Stream an answer using MMR retrieval + the selected LLM provider."
     engine = get_engine()
     provider = req.provider or settings.llm_provider
 
@@ -112,7 +112,7 @@ async def chat(req: ChatRequest):
 
 @app.get("/sources")
 def list_sources():
-    """List all ingested document sources in the vector store."""
+    " List all ingested document sources in the vector store."
     engine = get_engine()
     collection = engine._store.get()
     sources = sorted({

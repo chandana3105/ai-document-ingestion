@@ -1,7 +1,7 @@
 # Environment
 .env
 
-# Vector DB (generated, not source code)
+# Vector DB
 vector_db/
 
 # Python

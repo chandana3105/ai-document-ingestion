@@ -1,6 +1,5 @@
 from pydantic_settings import BaseSettings
 
-
 class Settings(BaseSettings):
     documents_dir: str = "documents"
     vector_db_dir: str = "vector_db"

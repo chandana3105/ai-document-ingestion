@@ -14,7 +14,7 @@ st.set_page_config(
 st.title("AI Document Chat")
 st.caption("Upload documents, then ask questions. Powered by RAG + OpenAI / Claude.")
 
-# --- Sidebar ---
+# Sidebar
 with st.sidebar:
     st.header("Settings")
 
@@ -65,7 +65,7 @@ with st.sidebar:
         st.warning("API unreachable — is uvicorn running?")
 
 
-# --- Chat ---
+# Chat
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
